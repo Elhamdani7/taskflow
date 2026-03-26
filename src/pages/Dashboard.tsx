@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../features/auth/AuthContext';
 import api from '../api/axios';
-import Header from '../components/Header';
+// import Header from '../components/Header';
+// import HeaderMUI from '../components/HeaderMUI';
+import HeaderBS from '../components/HeaderBS';
 import Sidebar from '../components/Sidebar';
 import MainContent from '../components/MainContent';
 import ProjectForm from '../components/ProjectForm';
@@ -92,12 +94,30 @@ export default function Dashboard() {
 
   return (
     <div className={styles.layout}>
-      <Header
+      {/* Version originale (commentée) */}
+      {/* <Header
+        title="TaskFlow"
+        onMenuClick={() => setSidebarOpen(prev => !prev)}
+        userName={authState.user?.name}
+        onLogout={() => dispatch({ type: 'LOGOUT' })}
+      /> */}
+
+      {/* Version MUI (commentée) */}
+      {/* <HeaderMUI
+        title="TaskFlow"
+        onMenuClick={() => setSidebarOpen(prev => !prev)}
+        userName={authState.user?.name}
+        onLogout={() => dispatch({ type: 'LOGOUT' })}
+      /> */}
+
+      {/* Version Bootstrap (décommentée pour tester) */}
+      <HeaderBS
         title="TaskFlow"
         onMenuClick={() => setSidebarOpen(prev => !prev)}
         userName={authState.user?.name}
         onLogout={() => dispatch({ type: 'LOGOUT' })}
       />
+
       <div className={styles.body}>
         <Sidebar projects={projects} isOpen={sidebarOpen} />
         <div className={styles.content}>
