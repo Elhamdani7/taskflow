@@ -1,19 +1,17 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useAuth } from './features/auth/AuthContext';
-// import Login from './features/auth/Login';
-// import LoginMUI from './features/auth/LoginMUI';
-import LoginBS from './features/auth/LoginBS';
+import { useSelector } from 'react-redux';
+import type { RootState } from './store';
+import Login from './features/auth/Login';
 import Dashboard from './pages/Dashboard';
 import ProjectDetail from './pages/ProjectDetail';
 import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
-  const { state } = useAuth();
+  const { user } = useSelector((state: RootState) => state.auth);
 
   return (
     <Routes>
-      {/* Test Login Bootstrap - décommenté */}
-      <Route path="/login" element={<LoginBS />} />
+      <Route path="/login" element={<Login />} />
       <Route
         path="/"
         element={
